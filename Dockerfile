@@ -50,6 +50,10 @@ RUN a2ensite 000-default.conf
 
  
 
+# Crée le dossier assets et le lie aux images existantes
+RUN mkdir -p /var/www/html/public/assets/images && \
+    ln -sf /var/www/html/public/images/* /var/www/html/public/assets/images/
+    
 # Port exposé (Render utilise le port 8080 ou 10000)
 EXPOSE 8080
 
