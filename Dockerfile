@@ -38,6 +38,18 @@ RUN echo "Listen 8080" > /etc/apache2/ports.conf
 RUN sed -i 's/80/8080/g' /etc/apache2/sites-available/*.conf
 RUN sed -i 's/80/8080/g' /etc/apache2/apache2.conf
 
+
+# Copie la configuration Apache personnalisée
+COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+# Désactive la configuration par défaut inadaptée (si elle existe)
+RUN a2dissite 000-default.conf 2>/dev/null || true
+
+# Active notre nouvelle configuration
+RUN a2ensite 000-default.conf
+
+ 
+
 # Port exposé (Render utilise le port 8080 ou 10000)
 EXPOSE 8080
 
