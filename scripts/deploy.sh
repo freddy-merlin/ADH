@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Définir les variables d'environnement pour la phase de build
+export CACHE_DRIVER=array
+export SESSION_DRIVER=file
+export QUEUE_DRIVER=sync
+
 # Installe les dépendances Composer
 composer install --no-dev --optimize-autoloader
 
@@ -15,4 +20,4 @@ php artisan route:cache
 php artisan view:cache
 
 # Nettoie le cache (au cas où)
-php artisan optimize:clear
+#php artisan optimize:clear
