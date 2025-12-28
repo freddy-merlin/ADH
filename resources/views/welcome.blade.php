@@ -21,7 +21,7 @@
                      Accélérez votre <mark>transformation digitale</mark>  avec des solutions sur mesure.  
                   </h1>
                   <p>
-                    ADH Groupe vous accompagne dans la construction de solutions digitales performantes, alignées sur vos    besoins.
+                    ADH Group vous accompagne dans la construction de solutions digitales performantes, alignées sur vos    besoins.
                    
                   </p>
                   <ul class="step_list text-white unordered_list_block">
@@ -100,142 +100,172 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_1.webp" alt="Techco - Client Logo Image">
+                    <img src="{{ asset('images/clients/Ecobank_logo.webp') }}" alt="adh - ecobank">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_2.webp" alt="Techco - Client Logo Image">
+                    <img src="{{ asset('images/clients/Logo_CGTS.jpg') }}" alt="adh - cgts">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_3.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Matanti.jpg')}}" alt="adh - Logo Matanti">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_4.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Nocibe.jpg')}}" alt="ADH -  Logo_Nocibe">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_5.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/LTG_Conseil_Logo.svg')}}" alt="ADH - LTG">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_6.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/nsia_banque.jpg')}}" alt="ADH - NSIA Banque Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_7.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/scb1.jpeg')}}" alt="ADH - SCB Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_1.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo-SOS-new.png')}}" alt="ADH -  Logo-SOS">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_2.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/71356-pnhg.jpg')}}" alt="ADH - PNHG Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_3.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/major.jpeg')}}" alt="ADH - Etat major Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_4.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/aid.jpeg')}}" alt="ADH - Client Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_5.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/proximajobpng')}}" alt="ADH - Proximajob Logo Image">
+                  </div>
+                </div>
+              
+                                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{ asset('images/clients/Logo_CGTS.jpg') }}" alt="adh - cgts">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_6.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Matanti.jpg')}}" alt="adh - Logo Matanti">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_7.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Nocibe.jpg')}}" alt="ADH -  Logo_Nocibe">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_1.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/LTG_Conseil_Logo.svg')}}" alt="ADH - LTG">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_2.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/nsia_banque.jpg')}}" alt="ADH - NSIA Banque Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_3.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/scb1.jpeg')}}" alt="ADH - SCB Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_4.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo-SOS-new.png')}}" alt="ADH -  Logo-SOS">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_5.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/71356-pnhg.jpg')}}" alt="ADH - PNHG Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_6.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/major.jpeg')}}" alt="ADH - Etat major Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_7.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/aid.jpeg')}}" alt="ADH - Client Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_1.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/proximajobpng')}}" alt="ADH - Proximajob Logo Image">
+                  </div>
+                </div>                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{ asset('images/clients/Logo_CGTS.jpg') }}" alt="adh - cgts">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_2.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Matanti.jpg')}}" alt="adh - Logo Matanti">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_3.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo_Nocibe.jpg')}}" alt="ADH -  Logo_Nocibe">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_4.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/LTG_Conseil_Logo.svg')}}" alt="ADH - LTG">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_5.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/nsia_banque.jpg')}}" alt="ADH - NSIA Banque Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_6.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/scb1.jpeg')}}" alt="ADH - SCB Logo Image">
                   </div>
                 </div>
                 <div class="swiper-slide">
                   <div class="client_logo_item">
-                    <img src="assets/images/clients/client_logo_7.webp" alt="Techco - Client Logo Image">
+                    <img src="{{asset('images/clients/Logo-SOS-new.png')}}" alt="ADH -  Logo-SOS">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{asset('images/clients/71356-pnhg.jpg')}}" alt="ADH - PNHG Logo Image">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{asset('images/clients/major.jpeg')}}" alt="ADH - Etat major Logo Image">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{asset('images/clients/aid.jpeg')}}" alt="ADH - Client Logo Image">
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="client_logo_item">
+                    <img src="{{asset('images/clients/proximajobpng')}}" alt="ADH - Proximajob Logo Image">
                   </div>
                 </div>
               </div>
@@ -253,8 +283,8 @@
               <div class="heading_focus_text has_underline d-inline-flex" style="background-image: url('assets/images/shapes/shape_title_under_line.svg');">
                  Nos solutions et technologies
               </div>
-              <h2 class="heading_text mb-0">
-                Nos services pour votre  <mark> Succès</mark> 
+              <h2 class="heading_text mb-0"  >
+             <span style="color:black;">Nos services pour votre</span>     <mark>  succès</mark> 
               </h2>
             </div>
 
@@ -262,11 +292,11 @@
               <div class="col-lg-4">
                 <div class="service_block_2">
                   <div class="service_icon">
-                    <img src="{{ asset('images/icons/icon_code.svg') }}" alt="Techco - Service icon">
+                    <img src="{{ asset('images/icons/icon_code.svg') }}" alt=" adh group - Service icon">
                   </div>
                   <h3 class="service_title">
                     <a href="service_details.html">
-                     Solution d’entreprise & fintech
+                      Solution de gestion pour entreprise, ERP & fintech.
                     </a>
                   </h3>
                   <ul class="icon_list unordered_list_block">
@@ -281,18 +311,18 @@
                   
                   </ul>
 
-                   <a class="btn btn-primary" href="about.html">
-                      <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
-                      <span class="btn_icon">
-                        <i class="fa-solid fa-arrow-up-right"></i>
-                      </span>
-                    </a>
+                  <a class="btn btn-primary" href="{{ route('services') }}#solution">
+                    <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
+                    <span class="btn_icon">
+                      <i class="fa-solid fa-arrow-up-right"></i>
+                    </span>
+                  </a>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="service_block_2">
                   <div class="service_icon">
-                    <img src="{{ asset('images/icons/icon_programming_tree.svg') }}" alt="Techco - Service icon">
+                    <img src="{{ asset('images/icons/icon_programming_tree.svg') }}" alt=" Adh - Service icon">
                   </div>
                   <h3 class="service_title">
                     <a href="service_details.html">
@@ -310,18 +340,18 @@
                    
                   </ul>
 
-                     <a class="btn btn-primary" href="about.html">
-                      <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
-                      <span class="btn_icon">
-                        <i class="fa-solid fa-arrow-up-right"></i>
-                      </span>
-                    </a>
-                </div>
+                      <a class="btn btn-primary" href="{{ route('services') }}#ia">
+                        <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+                   </div>
               </div>
               <div class="col-lg-4">
                 <div class="service_block_2">
                   <div class="service_icon">
-                    <img src="{{ asset ('images/icons/icon_monitor_2.svg') }}" alt="Techco - Service icon">
+                    <img src="{{ asset ('images/icons/icon_monitor_2.svg') }}" alt="ADH - Service icon">
                   </div>
                   <h3 class="service_title">
                     <a href="service_details.html">
@@ -339,71 +369,15 @@
                      
                   </ul>
 
-                  <a class="btn btn-primary" href="about.html">
-                      <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
-                      <span class="btn_icon">
-                        <i class="fa-solid fa-arrow-up-right"></i>
-                      </span>
-                    </a>
+                     <a class="btn btn-primary" href="{{ route('services') }}#security">
+                        <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="service_block_2">
-                  <div class="service_icon">
-                    <img src="{{ asset ('images/icons/icon_phone.svg') }}" alt="Techco - Service icon">
-                  </div>
-                  <h3 class="service_title">
-                    <a href="service_details.html">
-                       Formation & Certification 
-                    </a>
-                  </h3>
-                  <ul class="icon_list unordered_list_block">
-                    <li>
-                    
-                      <span class="icon_list_text">
-                        Nous renforçons les compétences de vos équipes grâce à des programmes pratiques, certifiants et adaptés aux exigences du numérique moderne.
-                      </span>
-                    </li>
-                   
-                  </ul>
-
-                   <a class="btn btn-primary" href="about.html">
-                      <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
-                      <span class="btn_icon">
-                        <i class="fa-solid fa-arrow-up-right"></i>
-                      </span>
-                    </a>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="service_block_2">
-                  <div class="service_icon">
-                    <img src="{{ asset ('images/icons/icon_bug.svg') }}" alt="Techco - Service icon">
-                  </div>
-                  <h3 class="service_title">
-                    <a href="service_details.html">
-                      Support & Infogérance 
-                    </a>
-                  </h3>
-                  <ul class="icon_list unordered_list_block">
-                    <li>
-                      
-                      <span class="icon_list_text">
-                       Nous assurons la gestion continue de vos infrastructures pour garantir stabilité, performance et tranquillité d’esprit au quotidien.
-                      </span>
-                    </li>
-                     
-                  </ul>
-                    <a class="btn btn-primary" href="about.html">
-                      <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
-                      <span class="btn_icon">
-                        <i class="fa-solid fa-arrow-up-right"></i>
-                      </span>
-                    </a>
-
-                </div>
-              </div>
-              <div class="col-lg-4">
+                            <div class="col-lg-4">
                 <div class="service_block_2">
                   <div class="service_icon">
                     <img src="{{ asset('images/icons/icon_programming.svg') }}" alt="Techco - Service icon">
@@ -432,6 +406,64 @@
 
                 </div>
               </div>
+                            <div class="col-lg-4">
+                <div class="service_block_2">
+                  <div class="service_icon">
+                    <img src="{{ asset ('images/icons/icon_bug.svg') }}" alt="Techco - Service icon">
+                  </div>
+                  <h3 class="service_title">
+                    <a href="service_details.html">
+                      Support & Infogérance 
+                    </a>
+                  </h3>
+                  <ul class="icon_list unordered_list_block">
+                    <li>
+                      
+                      <span class="icon_list_text">
+                       Nous assurons la gestion continue de vos infrastructures pour garantir stabilité, performance et tranquillité d’esprit au quotidien.
+                      </span>
+                    </li>
+                     
+                  </ul>
+                      <a class="btn btn-primary" href="{{ route('services') }}#support">
+                        <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="service_block_2">
+                  <div class="service_icon">
+                    <img src="{{ asset ('images/icons/icon_phone.svg') }}" alt="Techco - Service icon">
+                  </div>
+                  <h3 class="service_title">
+                    <a href="service_details.html">
+                       Formation & Certification 
+                    </a>
+                  </h3>
+                  <ul class="icon_list unordered_list_block">
+                    <li>
+                    
+                      <span class="icon_list_text">
+                        Nous renforçons les compétences de vos équipes grâce à des programmes pratiques, certifiants et adaptés aux exigences du numérique moderne.
+                      </span>
+                    </li>
+                   
+                  </ul>
+
+                     <a class="btn btn-primary" href="{{ route('services') }}#formation">
+                        <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
+                        <span class="btn_icon">
+                          <i class="fa-solid fa-arrow-up-right"></i>
+                        </span>
+                      </a>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -458,97 +490,97 @@
         <!-- About and Case Section - Start
         ================================================== -->
 
+        <section class="client_logo_section section_space" style="background-image: url('../images/shapes/bg_pattern_1.svg'); border-top: 5px solid #676767;">
+            <div class="container">
+                <div class="row funfact_wrapper">
+                    <div class="col-12 text-center mb-5">
+                        <h2 class="heading_text">Pourquoi choisir <mark>ADH Group</mark>?</h2>
+                    </div>
 
-        <section class="client_logo_section section_space" style="background-image: url('../images/shapes/bg_pattern_1.svg'); border-top: 5px solid #676767; ">
-          <div class="container">
-           
+                    <!-- Carte de gauche -->
+                    <div class="col-lg-4 mb-4 mb-lg-0 d-flex">
+                        <div class="our_world_employees flex-grow-1">
+                            <div class="image_wrap">
+                                <img src="{{ asset('images/about/about_image_1.webp') }}" alt="Techco - Employees Group Image">
+                            </div>
+                            <div class="content_wrap">
+                                <p class="title_text1" >
+                                    Fort de nos années d'expériences, nous comprenons parfaitement les défis uniques des organisations publiques et privées en Afrique. C'est pourquoi toutes nos solutions sont conçues pour être pratiques, sécurisées et adaptées aux réalités locales. ADH Group vous accompagne avec des technologies performantes qui fonctionnent réellement dans le contexte africain.
+                               
+                                  </p>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row funfact_wrapper">
-             <center>   <h2 class="heading_text">   Pourquoi choisir <mark>ADH Groupe </mark>?  </h2></center>  
+                    <!-- 4 cartes de droite -->
+                    <div class="col-lg-8">
+                        <div class="row h-100">
+                            <!-- Colonne gauche des cartes -->
+                            <div class="col-md-6 d-flex flex-column">
+                                <!-- Première carte -->
+                                <div class="funfact_block flex-grow-1 mb-4">
+                                    <div class="funfact_icon">
+                                        <img src="{{ asset('images/icons/icon_head.svg') }}" alt="Techco - SVG Icon Head">
+                                    </div>
+                                    <div class="funfact_content">
+                                        <div class="counter_value">
+                                            <span class="odometer" data-count="10">0</span>
+                                            <span>+</span>
+                                        </div>
+                                        <h3 class="funfact_title mb-0">Années d'expertise en Afrique</h3>
+                                    </div>
+                                </div>
 
-            <div class="col-lg-4">
-                <div class="our_world_employees">
-                  <div class="image_wrap">
-                    <img src="{{ asset('images/about/about_image_1.webp') }}" alt="Techco - Employees Guoup Image">
-                  </div>
-                  <div class="content_wrap">
-                    <p class="title_text1">
-                         Fort de nos années d’expériences, nous comprenons parfaitement les défis uniques des organisations publiques
-                          et privées en Afrique. C’est pourquoi toutes nos solutions sont conçues pour être pratiques, sécurisées et 
-                          adaptées aux réalités locales. ADH Groupe vous accompagne avec des technologies performantes qui fonctionnent 
-                          réellement dans le contexte africain. 
-                    </p>
-                  </div>
+                                <!-- Troisième carte -->
+                                <div class="funfact_block flex-grow-1 mt-4 mt-md-0">
+                                    <div class="funfact_icon">
+                                        <img src="{{ asset('images/icons/icon_like.svg') }}" alt="Techco - SVG Icon Like">
+                                    </div>
+                                    <div class="funfact_content">
+                                        <div class="counter_value">
+                                            <span class="odometer" data-count="100">0</span>
+                                            <span>%</span>
+                                        </div>
+                                        <h3 class="funfact_title mb-0">Solutions sécurisées adaptées aux réalités africaines</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Colonne droite des cartes -->
+                            <div class="col-md-6 d-flex flex-column">
+                                <!-- Deuxième carte -->
+                                <div class="funfact_block flex-grow-1 mb-4">
+                                    <div class="funfact_icon">
+                                        <img src="{{ asset('images/icons/icon_check.svg') }}" alt="Techco - SVG Icon Check">
+                                    </div>
+                                    <div class="funfact_content">
+                                        <div class="counter_value">
+                                            <span class="odometer" data-count="50">0</span>
+                                            <span>+</span>
+                                        </div>
+                                        <h3 class="funfact_title mb-0">Projets réalisés avec succès</h3>
+                                    </div>
+                                </div>
+
+                                <!-- Quatrième carte -->
+                                <div class="funfact_block flex-grow-1 mt-4 mt-md-0">
+                                    <div class="funfact_icon">
+                                        <img src="{{ asset('images/icons/icon_dart_board.svg') }}" alt="Techco - SVG Icon Head">
+                                    </div>
+                                    <div class="funfact_content">
+                                        <div class="counter_value">
+                                            <span class="odometer" data-count="5">0</span>
+                                            <span>+</span>
+                                        </div>
+                                        <h3 class="funfact_title mb-0">Pays couverts à travers le continent</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-              <div class="col-lg-8">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="funfact_block">
-                      <div class="funfact_icon">
-                        <img src="{{ asset('images/icons/icon_head.svg') }}" alt="Techco - SVG Icon Head">
-                      </div>
-                      <div class="funfact_content">
-                        <div class="counter_value">
-                          <span class="odometer" data-count="10">0</span>
-                          <span>+</span>
-                        </div>
-                        <h3 class="funfact_title mb-0">Années d’expertise  en Afrique</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="funfact_block">
-                      <div class="funfact_icon">
-                        <img src="{{ asset('images/icons/icon_check.svg') }}" alt="Techco - SVG Icon Check">
-                      </div>
-                      <div class="funfact_content">
-                        <div class="counter_value">
-                          <span class="odometer" data-count="50">0</span>
-                          <span>+</span>
-                        </div>
-                        <h3 class="funfact_title mb-0">Projets  réalisés avec succès </h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="funfact_block">
-                      <div class="funfact_icon">
-                        <img src="{{ asset('images/icons/icon_like.svg') }}" alt="Techco - SVG Icon Like">
-                      </div>
-                      <div class="funfact_content">
-                        <div class="counter_value">
-                          <span class="odometer" data-count="100">0</span>
-                          <span>%</span>
-                        </div>
-                        <h3 class="funfact_title mb-0"> Solutions sécurisées adaptées aux réalités africaines </h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="funfact_block">
-                      <div class="funfact_icon">
-                        <img src="{{ asset('images/icons/icon_dart_board.svg') }}" alt="Techco - SVG Icon Head">
-                      </div>
-                      <div class="funfact_content">
-                        <div class="counter_value">
-                          <span class="odometer" data-count="5">0</span>
-                          <span>+</span>
-                        </div>
-                        <h3 class="funfact_title mb-0"> Pays couverts à travers le continent   </h3>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
-          </div>
         </section>
-
-
-
         <section class="about_and_case_section section_space section_decoration bg-dark" style="background-image: url('../images/backgrounds/bg_image_2.webp');">
             <div class="decoration_item shape_image_1">
                 <img src="{{ asset ('images/shapes/shape_space_2.svg') }}"  alt="adh group">
@@ -577,7 +609,7 @@
                   
                   <ul class="btns_group unordered_list p-0 justify-content-start">
                     <li>
-                      <a class="btn" href="pricing.html">
+                      <a class="btn" href="{{ route('contact') }}">
                         <span class="btn_label" data-text="Demarrer">Nous contacter </span>
                         <span class="btn_icon">
                           <i class="fa-solid fa-arrow-up-right"></i>
@@ -606,13 +638,13 @@
                       A propos de ADH Group
                     </h2>
                     <p class="heading_description text-dark pe-lg-5">
-                       ADH Groupe développe des solutions numériques modernes pour transformer les services du secteur public et privé en Afrique. 
+                       ADH Group développe des solutions numériques modernes pour transformer les services du secteur public et privé en Afrique. 
                     </p>
                     <p class="heading_description mb-0 text-dark pe-lg-5">
                      Grâce à notre expertise diversifiée  en infrastructures digitales et en technologies, nous créons des plateformes robustes, rapides et sécurisées qui améliorent l’efficacité de nos clients et l’expérience des utilisateurs. 
                     </p>
                   </div>
-                  <a class="creative_btn" href="pricing.html">
+                  <a class="creative_btn" href="{{ route('contact') }}">
                     <span class="btn_label bg-primary"> Nous contacter</span>
                     <span class="btn_icon">
                       <i class="bg-primary fa-solid fa-arrow-up-right"></i>
@@ -646,7 +678,7 @@
 
         <!-- Contact Section - Start
         ================================================== -->
-        <section class="contact_section pb-80 bg-light section_decoration" style="background-image: url('../images/backgrounds/bg5.png');">
+        <section class="contact_section pb-80 bg-light section_decoration" style="background-image: url('../images/backgr ounds/bg5.png'); border-top: 5px solid #676767;">
         <div class="container">
             <div class="row">
             <div class="col-lg-4">
@@ -792,6 +824,43 @@
     color: #0066cc;
     margin-bottom: 1rem;
 }
+</style>
+<style>
+    .client_logo_section * {
+        font-family: 'Poppins', sans-serif !important;
+    }
+    
+    .client_logo_section .heading_text {
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        line-height: 1.3;
+    }
+    
+    .client_logo_section mark {
+        background: linear-gradient(120deg, rgba(103, 103, 103, 0.1) 0%, rgba(103, 103, 103, 0) 100%);
+        padding: 0 8px;
+        color: #2c3e50;
+        font-weight: 700;
+    }
+    
+    .client_logo_section .title_text1 {
+        font-weight: 600;  
+        line-height: 1.7;
+        font-size: 1.18rem;  
+        color: #374151;  
+    }
+    
+    .client_logo_section .funfact_title {
+        font-weight: 500;
+        line-height: 1.5;
+        color: #2d3748;
+        font-size: 1.1rem;
+    }
+    
+    .client_logo_section .counter_value {
+        font-weight: 700;
+        color: #2c3e50;
+    }
 </style>
 @endpush
 

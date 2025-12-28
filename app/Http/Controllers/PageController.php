@@ -13,7 +13,7 @@ class PageController extends Controller
 
          public function services()
     {
-        return view('apropos');
+        return view('services');
     }
 
          public function realisations()
@@ -24,5 +24,10 @@ class PageController extends Controller
          public function contact()
     {
         return view('contact');
+    }
+
+             public function contactprojet()
+    {
+        return view('votreprojet');
     }
 }

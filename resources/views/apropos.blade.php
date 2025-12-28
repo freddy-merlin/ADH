@@ -28,33 +28,32 @@
           <div class="intro_about_content">
             <div class="container">
               <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6 mx-auto">
                   <div class="image_wrap">
                     <img src="{{asset('images/about/img3.png')}}" alt="Techco - About Image">
                   </div>
                 </div>
-                <div class="col-lg-4">
-                  <div class="image_wrap position-relative">
-                    <img src="{{ asset('images/about/img4.png') }}" alt="Techco - About Image">
-                     
-                  </div>
-                </div>
+                 
               </div>
             </div>
           </div>
           <div class="container">
-            <div class="heading_block mb-0">
+            <div class="heading_block mb-0 position-relative mt-4">
               <div class="row justify-content-lg-between">
-                <div class="col-lg-4">
-                  <div class="heading_focus_text">
+                 <div class="heading_focus_text">
                     À propos de  
                     <span class="badge bg-secondary text-white">ADH Group</span> 
                   </div>
+                  <div class="col-lg-6">
+                 
+                  <div class="image_wrap h-100   ">
+                    <img src="{{asset('images/about/img6.png')}}" alt="Techco - About Image" style="border-radius: 2%">
+                  </div>
+                </div>
+                <div class="col-lg-6 ">
                   <h2 class="heading_text mb-0">
                    L'agilité au service de votre croissance.
                   </h2>
-                </div>
-                <div class="col-lg-6">
                   <p class="heading_description mb-0">
                     ADH est une entreprise technologique panafricaine spécialisée dans la FinTech, l’Intelligence Artificielle et la transformation digitale. Nous accompagnons les organisations publiques et privées dans la modernisation de leurs services grâce à des solutions innovantes, sécurisées et adaptées aux réalités du marché africain.  
                   Nous composons une équipe d’ingénieurs, d’experts numériques et de stratèges engagés pour faire émerger des solutions technologiques fiables, évolutives et accessibles. Nous combinons innovation, expertise et rigueur pour proposer des services à fort impact, du conseil stratégique à la mise en œuvre technique 
@@ -129,8 +128,8 @@
           <div class="container">
             <div class="row align-items-center justify-content-lg-between">
               <div class="col-lg-6">
-                <div class="image_wrap">
-                  <img src="{{ asset ('images/about/about_image_5.webp') }}" alt="Techco - About Image">
+                <div class="  " >
+                  <img src="{{ asset ('images/about/about5.png') }}" alt="Techco - About Image" style="border-radius: 5%;  " > 
                 </div>
               </div>
               <div class="col-lg-6">

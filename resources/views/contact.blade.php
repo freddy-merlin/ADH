@@ -127,24 +127,7 @@
   <!-- Contact Section - End -->
 
   <!-- Call To Action Section - Start -->
-  <section class="calltoaction_section parallaxie" style="background-image: url('../images/backgrounds/bg1.png');">
-    <div class="container text-center">
-      <div class="heading_block text-white">
-        <h2 class="heading_text">
-          Prêt à travailler ? Discutons ensemble
-        </h2>
-        <p class="heading_description mb-0">
-          Notre équipe d'experts est prête à collaborer avec vous à chaque étape, de la consultation initiale à la mise en œuvre.
-        </p>
-      </div>
-      <a class="btn btn-primary" href="contact.html">
-        <span class="btn_label" data-text="Nous contacter aujourd'hui !">Nous contacter aujourd'hui !</span>
-        <span class="btn_icon">
-          <i class="fa-solid fa-arrow-up-right"></i>
-        </span>
-      </a>
-    </div>
-  </section>
+ 
   <!-- Call To Action Section - End -->
 
 </main>

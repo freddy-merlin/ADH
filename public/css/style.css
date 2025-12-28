@@ -77,7 +77,7 @@
   --bs-info: #23BABF;
   --bs-warning: #F3A338;
   --bs-danger: #F26F4D;
-  --bs-success: #47B16A;
+  --bs-success: #0044eb;
   --bs-primary-rgb: 0, 68, 235;
   --bs-secondary-rgb: 244, 67, 128;
   --bs-dark-rgb: 2, 8, 66;
@@ -1210,7 +1210,7 @@ input[type=search]::-webkit-search-results-decoration {
     border-radius: 100%;
     display: inline-flex;
     justify-content: center;
-    background-color: #47B16A; }
+    background-color: #0044eb; }
 
 .our_world_employees {
   position: relative; }
@@ -3771,7 +3771,7 @@ input[type=search]::-webkit-search-results-decoration {
     bottom: 85px;
     position: absolute; }
     .about_image_3 .funfact_block .funfact_icon {
-      background-color: #FFBE16; }
+      background-color: #0044EB; }
 
 body:has(.page_banner_section + .intro_about_section) .page_banner_section {
   padding-bottom: 394px; }
@@ -4954,7 +4954,7 @@ Responsive For Mobile & Tablet Devices
   .funfact_block.capsule_layout .funfact_icon {
     width: 60px;
     height: 60px;
-    background-color: #47B16A; }
+    background-color: #0044EB; }
 
   .funfact_block.capsule_layout .funfact_content {
     gap: 4px;

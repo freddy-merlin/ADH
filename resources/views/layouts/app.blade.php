@@ -5,10 +5,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="thumbnail" content="assets/images/Techco_page_thumbnail_2.webp">
+    <!--<meta name="thumbnail" content="assets/ima  ges/Techco_page_thumbnail_2.webp">-->
     <meta name="description" content="@yield('description', 'ADH Group – Solutions & Innovation')">
     <meta name="keywords" content="@yield('keywords', 'IT Solutions, Digital Transformation, Cloud, Cybersecurity')">
     <meta name="author" content="ADH Group">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    
 
     <title>@yield('title', 'ADH Group – Solutions & Innovation')</title>
     
@@ -30,10 +38,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.min.css') }}">
 
     <!-- Counter - CSS Include -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer.min.css') }}">p
 
     <!-- Custom - CSS Include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    
 
     @stack('styles')
 </head>
@@ -49,7 +58,7 @@
                     <div class="loader-line"></div>
                 </div>
                 <div class="loader-logo">
-                    <img src="{{ asset('images/site_logo/site_logo_2.svg') }}" alt="Site Logo – ADH Group">
+                    <img src="{{ asset('images/site_logo/preloader.png') }}" alt="Site Logo – ADH Group">
                 </div>
             </div>
         </div>
@@ -64,15 +73,15 @@
         <!-- Back To Top - End -->
 
         <!-- Site Header - Start -->
-        <header class="site_header site_header_2">
+        <header class="site_header site_header_2 " >
             <div class="header_bottom stricky">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-5">
                             <div class="site_logo">
                                 <a class="site_link" href=" ">
-                                    <img src="{{ asset('images/site_logo/site_logo.png') }}" alt="Site Logo – ADH Group">
-                                    <img src="{{ asset('images/site_logo/site_logo.png') }}" alt="Site Logo – ADH Group">
+                                    <img src="{{ asset('images/site_logo/logoadh.png') }}" alt="Site Logo – ADH Group">
+                                    <img src="{{ asset('images/site_logo/logoadh.png') }}" alt="Site Logo – ADH Group">
                                 </a>
                             </div>
                         </div>
@@ -90,23 +99,24 @@
                                                 Nos services
                                             </a>
                                         </li>
-                                        <li class="{{ Request::routeIs('about') ? 'active' : '' }}">
-                                            <a class="nav-link" href="{{ route('about') }}">
-                                                À propos
-                                            </a>
-                                        </li>
                                         <li class="{{ Request::routeIs('realisations') ? 'active' : '' }}">
-                                            <a class="nav-link" href=" {{ route('realisations') }}">
+                                            <a class="nav-link" href="#">
                                                 Nos réalisations
                                             </a>
                                         </li>
+                                        <li class="{{ Request::routeIs('about') ? 'active' : '' }}">
+                                            <a class="nav-link" href="{{ route('about') }}">
+                                                À propos de nous
+                                            </a>
+                                        </li>
+
                                         <li class="{{ Request::routeIs('contact') ? 'active' : '' }}">
                                             <a href=" {{ route('contact') }}">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
                             </nav>
-                        </div>
+                       </div>
                         <div class="col-lg-3 col-5">
                             <ul class="header_btns_group unordered_list justify-content-end">
                                 <li>
@@ -115,8 +125,8 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <a class="btn btn-primary" href=" ">
-                                        <span class="btn_label" data-text="Démarrer">Nous Contacter</span>
+                                    <a class="btn btn-primary" href=" {{ route('contactprojet') }}">
+                                        <span class="btn_label" data-text="Démarrer un projet ">Démarrer un projet </span>
                                         <span class="btn_icon">
                                             <i class="fa-solid fa-arrow-up-right"></i>
                                         </span>
@@ -131,71 +141,31 @@
         <!-- Site Header - End -->
 
         <!-- Main Body - Start -->
-        <main class="page_content">
+        <main class="page_content ">
             @yield('content')
         </main>
         <!-- Main Body - End -->
 
         <!-- Site Footer - Start -->
-        <footer class="site_footer footer_layout_2 section_decoration" style="background-image: url('{{ asset('images/shapes/bg_pattern_3.svg') }}');">
+        <footer class="site_footer footer_layout_2 section_decoration  " style="background-image: url('{{ asset('images/shapes/bg_pattern_3.svg') }}');">
             <div class="decoration_item shape_image_1">
                 <img src="{{ asset('images/shapes/shape_space_2.svg') }}" alt="ADH Group">
             </div>
 
             <div class="container">
-                <div class="service_pill_carousel swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Applications Web sur mesure</span>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Développement d'applications</span>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Développement web</span>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Solutions logicielles</span>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Applications d'entreprise</span>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a class="service_pill_block" href="#">
-                                <i class="fa-solid fa-check"></i>
-                                <span>Services DevOps</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                
 
                 <div class="footer_main_content">
                     <div class="row justify-content-lg-between">
                         <div class="col-lg-2 col-md-6">
                             <div class="footer_widget">
                                 <h3 class="footer_info_title">Entreprise</h3>
-                                <ul class="icon_list unordered_list_block">
-                                    <li><a href="{{ route('about') }}"><span class="icon_list_text">À propos</span></a></li>
-                                    <li><a href=" "><span class="icon_list_text">Nos réalisations</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Nos partenaires</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Nos implantations</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Carrières</span></a></li>
-                                    <li><a href=" "><span class="icon_list_text">Contact</span></a></li>
+                                 <ul class="icon_list unordered_list_block">
+                                    <li><a href="{{ route('services') }}"><span class="icon_list_text">Nos Services</span></a></li>
+                                    <li><a href="#"><span class="icon_list_text">Nos réalisations</span></a></li>
+                               
+                                    <li><a href="{{ route('about') }}"><span class="icon_list_text">À propos de nous</span></a></li>
+                                    <li><a href="{{ route('contact') }}"><span class="icon_list_text">Contact</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -204,12 +174,11 @@
                             <div class="footer_widget">
                                 <h3 class="footer_info_title">Expertise</h3>
                                 <ul class="icon_list unordered_list_block">
-                                    <li><a href="#!"><span class="icon_list_text">Solutions cloud</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Entrepôt de données</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Gestion des données</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Services BI</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Big Data</span></a></li>
-                                    <li><a href="#!"><span class="icon_list_text">Data Science</span></a></li>
+                                    <li><a href="{{ Route('services') }}"><span class="icon_list_text">Solution de gestion pour entreprise, ERP & fintech</span></a></li>
+                                    <li><a href="{{ Route('services') }}"><span class="icon_list_text">Intelligence artificielle & Data</span></a></li>
+                                    <li><a href="{{ Route('services') }}"><span class="icon_list_text">Cybersécurité & Cyberdéfense</span></a></li>
+                                    <li><a href="{{ Route('services') }}"><span class="icon_list_text"> Support & Infogérance</span></a></li>
+                                    <li><a href="{{ Route('services') }}"><span class="icon_list_text">Formation & Certification</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -238,7 +207,7 @@
                                     <label for="footer_mail_input">
                                         <img src="{{ asset('images/icons/icon_mail_2.svg') }}" alt="Mail Icon">
                                     </label>
-                                    <input id="footer_mail_input" type="email" name="email" placeholder="Entrez votre adresse e-mail">
+                                    <input id="footer_mail_input" type="email" name="email" placeholder="Adresse e-mail">
                                     <button type="submit">S'inscrire</button>
                                 </form>
                                 <ul class="social_icons_block unordered_list">
