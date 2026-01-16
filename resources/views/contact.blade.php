@@ -21,7 +21,7 @@
     <div class="container">
       <div class="contact_info_box row">
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="iconbox_block text-center">
+          <div class="iconbox_block h-100 text-center">
             <div class="iconbox_icon">
               <img src="{{ asset('images/icons/icon_map_mark_2.svg') }}" alt="Icône Localisation">
             </div>
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="iconbox_block text-center">
+          <div class="iconbox_block  h-100 text-center">
             <div class="iconbox_icon">
               <img src="{{ asset('images/icons/icon_calling_2.svg') }}" alt="Icône Téléphone">
             </div>
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="iconbox_block text-center">
+          <div class="iconbox_block h-100 text-center">
             <div class="iconbox_icon">
               <img src="{{ asset('images/icons/icon_calendar_2.svg') }}" alt="Icône Calendrier">
             </div>

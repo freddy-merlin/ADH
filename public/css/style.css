@@ -1226,7 +1226,7 @@ input[type=search]::-webkit-search-results-decoration {
       z-index: 1;
       content: '';
       position: absolute;
-      background: linear-gradient(0deg, var(--bs-primary), transparent 70%); }
+      background:   var(--bs-primary)  }
   .our_world_employees .content_wrap {
     left: 0;
     right: 0;
@@ -1244,7 +1244,7 @@ input[type=search]::-webkit-search-results-decoration {
 
     .title_text1{
       font-size: 1.37em;
-      color: black;
+      color:white;
     }
 
 /* 2.12 - Counter or Funfact - End

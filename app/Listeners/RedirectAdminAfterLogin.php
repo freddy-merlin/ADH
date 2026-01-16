@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Listeners;
+
+use Illuminate\Auth\Events\Login;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+
+class RedirectAdminAfterLogin
+{
+    /**
+     * Handle the event.
+     */
+    public function handle(Login $event): void
+    {
+        if ($event->user->role === 'admin') {
+            redirect()->route('admin.dashboard');
+        }
+    }
+}

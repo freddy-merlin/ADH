@@ -31,8 +31,9 @@ class ProjectRequest extends Model
         return $this->hasMany(ProjectDocument::class);
     }
 
-    public function statusHistory()
+
+    public function statusHistories()
     {
-        return $this->hasMany(ProjectStatusHistory::class);
-    }
+        return $this->hasMany(ProjectStatusHistory::class, 'project_request_id')->orderBy('created_at', 'desc');
+    } 
 }

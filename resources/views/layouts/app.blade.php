@@ -19,8 +19,7 @@
     
 
     <title>@yield('title', 'ADH Group – Solutions & Innovation')</title>
-    
-    <link rel="shortcut icon" href="{{ asset('images/site_logo/favourite_icon_2.svg') }}">
+     
 
     <!-- Framework - CSS Include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
@@ -38,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.min.css') }}">
 
     <!-- Counter - CSS Include -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer.min.css') }}">p
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/odometer.min.css') }}">
 
     <!-- Custom - CSS Include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -96,12 +95,12 @@
                                         </li>
                                         <li class="{{ Request::routeIs('services') ? 'active' : '' }}">
                                             <a class="nav-link" href="{{ route('services') }}">
-                                                Nos services
+                                                  Services
                                             </a>
                                         </li>
                                         <li class="{{ Request::routeIs('realisations') ? 'active' : '' }}">
                                             <a class="nav-link" href="#">
-                                                Nos réalisations
+                                                  Réalisations
                                             </a>
                                         </li>
                                         <li class="{{ Request::routeIs('about') ? 'active' : '' }}">

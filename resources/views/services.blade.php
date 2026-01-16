@@ -55,7 +55,7 @@
                 </p>
                 </div>
                 <div class=" col-lg-6 image_wrap position-relative">
-                    <img src="{{ asset('images/about/img3.png') }}" alt="Techco - About Image" style="border-radius: 5%">
+                    <img src="{{ asset('images/about/3.png') }}" alt="Techco - About Image" style="border-radius: 5%">
                      
                   </div>
                    </div>

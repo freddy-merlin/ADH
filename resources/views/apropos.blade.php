@@ -28,9 +28,9 @@
           <div class="intro_about_content">
             <div class="container">
               <div class="row">
-                <div class="col-lg-6 mx-auto">
+                <div class="col-lg-8 mx-auto ">
                   <div class="image_wrap">
-                    <img src="{{asset('images/about/img3.png')}}" alt="Techco - About Image">
+                    <img src="{{asset('images/about/2.png')}}"   alt="ADH - About Image">
                   </div>
                 </div>
                  
@@ -47,7 +47,7 @@
                   <div class="col-lg-6">
                  
                   <div class="image_wrap h-100   ">
-                    <img src="{{asset('images/about/img6.png')}}" alt="Techco - About Image" style="border-radius: 2%">
+                    <img src="{{asset('images/about/6.png')}}" alt="Techco - About Image" style="border-radius: 2%">
                   </div>
                 </div>
                 <div class="col-lg-6 ">
@@ -129,81 +129,80 @@
             <div class="row align-items-center justify-content-lg-between">
               <div class="col-lg-6">
                 <div class="  " >
-                  <img src="{{ asset ('images/about/about5.png') }}" alt="Techco - About Image" style="border-radius: 5%;  " > 
+                  <img src="{{ asset ('images/about/5.png') }}" alt="Techco - About Image" style="border-radius: 5%;  " > 
                 </div>
               </div>
-              <div class="col-lg-6">
-                <div class="ps-lg-5">
-                  <div class="heading_block">
-                     
-                    <h2 class="heading_text mb-0">
-                       Nos valeurs 
-                    </h2>
-                  </div>
-                  <ul class="service_facilities_group unordered_list">
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_check_2.svg') }}" alt="Check SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0">Innovation : Toujours repousser les limites. </strong>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_leaf.svg') }}" alt="Leaf SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0">Excellence : Qualité, rigueur et performance. </strong>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_box.svg') }}" alt="Box SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0">Sécurité : La confiance par la protection des données. </strong>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_receipt_add.svg') }}" alt="Receipt Add SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0">Impact africain : Des solutions pensées pour nos réalités. </strong>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_monitor.svg') }}" alt="Monitor SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0">Transmission : Former et élever les talents locaux. </strong>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="iconbox_block layout_icon_left" href="service_details.html">
-                        <span class="iconbox_icon">
-                          <img src="{{ asset('images/icons/icon_microscope.svg') }}" alt="Microscope SVG Icon">
-                        </span>
-                        <span class="iconbox_content">
-                          <strong class="iconbox_title mb-0"> Durabilité : Construire des solutions pérennes pour l'avenir.</strong>
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+ <div class="col-lg-6">
+  <div class="ps-lg-5">
+    <div class="heading_block">
+      <h2 class="heading_text mb-0">
+        Nos valeurs 
+      </h2>
+    </div>
+    <ul class="service_facilities_group unordered_list d-flex flex-wrap">
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_check_2.svg') }}" alt="Check SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Innovation : Toujours repousser les limites.</strong>
+          </span>
+        </a>
+      </li>
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_leaf.svg') }}" alt="Leaf SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Excellence : Qualité, rigueur et performance.</strong>
+          </span>
+        </a>
+      </li>
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_box.svg') }}" alt="Box SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Sécurité : La confiance par la protection des données.</strong>
+          </span>
+        </a>
+      </li>
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_receipt_add.svg') }}" alt="Receipt Add SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Impact africain : Des solutions pensées pour nos réalités.</strong>
+          </span>
+        </a>
+      </li>
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_monitor.svg') }}" alt="Monitor SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Transmission : Former et élever les talents locaux.</strong>
+          </span>
+        </a>
+      </li>
+      <li class="col-lg-6 col-md-6 d-flex">
+        <a class="iconbox_block layout_icon_left d-flex flex-column w-100" href="service_details.html">
+          <span class="iconbox_icon">
+            <img src="{{ asset('images/icons/icon_microscope.svg') }}" alt="Microscope SVG Icon">
+          </span>
+          <span class="iconbox_content flex-grow-1">
+            <strong class="iconbox_title mb-0">Durabilité : Construire des solutions pérennes.</strong>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
             </div>
           </div>
         </section>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'À propos - ADH Group')
+@section('title', 'ADH Group')
 @section('description', 'Découvrez ADH Group, expert en solutions digitales en Afrique')
 @section('keywords', 'ADH Group, Solutions digitales, Transformation numérique, Afrique')
 
@@ -290,13 +290,13 @@
 
             <div class="row">
               <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset('images/icons/icon_code.svg') }}" alt=" adh group - Service icon">
                   </div>
                   <h3 class="service_title">
                     <a href="service_details.html">
-                      Solution de gestion pour entreprise, ERP & fintech.
+                      Solutions pour entreprise, ERP & fintech.
                     </a>
                   </h3>
                   <ul class="icon_list unordered_list_block">
@@ -311,7 +311,7 @@
                   
                   </ul>
 
-                  <a class="btn btn-primary" href="{{ route('services') }}#solution">
+                  <a class="btn btn-primary" href="{{ url('/domaines/erp-fintech') }}">
                     <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                     <span class="btn_icon">
                       <i class="fa-solid fa-arrow-up-right"></i>
@@ -320,7 +320,7 @@
                 </div>
               </div>
               <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset('images/icons/icon_programming_tree.svg') }}" alt=" Adh - Service icon">
                   </div>
@@ -340,7 +340,7 @@
                    
                   </ul>
 
-                      <a class="btn btn-primary" href="{{ route('services') }}#ia">
+                      <a class="btn btn-primary" href="{{ url('/domaines/ia-data') }}">
                         <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                         <span class="btn_icon">
                           <i class="fa-solid fa-arrow-up-right"></i>
@@ -349,7 +349,7 @@
                    </div>
               </div>
               <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset ('images/icons/icon_monitor_2.svg') }}" alt="ADH - Service icon">
                   </div>
@@ -369,7 +369,7 @@
                      
                   </ul>
 
-                     <a class="btn btn-primary" href="{{ route('services') }}#security">
+                     <a class="btn btn-primary" href="{{url('/domaines/cybersecurite')}}">
                         <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                         <span class="btn_icon">
                           <i class="fa-solid fa-arrow-up-right"></i>
@@ -378,7 +378,7 @@
                 </div>
               </div>
                             <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset('images/icons/icon_programming.svg') }}" alt="Techco - Service icon">
                   </div>
@@ -397,7 +397,7 @@
                     
                   </ul>
 
-                   <a class="btn btn-primary" href="about.html">
+                   <a class="btn btn-primary" href="{{ url('/domaines/cloud-infrastructure') }}">
                       <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                       <span class="btn_icon">
                         <i class="fa-solid fa-arrow-up-right"></i>
@@ -407,7 +407,7 @@
                 </div>
               </div>
                             <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset ('images/icons/icon_bug.svg') }}" alt="Techco - Service icon">
                   </div>
@@ -425,7 +425,7 @@
                     </li>
                      
                   </ul>
-                      <a class="btn btn-primary" href="{{ route('services') }}#support">
+                      <a class="btn btn-primary" href="{{ url('/domaines/support-infogrance') }}">
                         <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                         <span class="btn_icon">
                           <i class="fa-solid fa-arrow-up-right"></i>
@@ -436,7 +436,7 @@
               </div>
 
               <div class="col-lg-4">
-                <div class="service_block_2">
+                <div class="service_block_2  h-100">
                   <div class="service_icon">
                     <img src="{{ asset ('images/icons/icon_phone.svg') }}" alt="Techco - Service icon">
                   </div>
@@ -455,7 +455,7 @@
                    
                   </ul>
 
-                     <a class="btn btn-primary" href="{{ route('services') }}#formation">
+                     <a class="btn btn-primary" href="{{ url('/domaines/formation') }}">
                         <span class="btn_label" data-text="En savoir plus">En savoir plus</span>
                         <span class="btn_icon">
                           <i class="fa-solid fa-arrow-up-right"></i>
@@ -490,97 +490,95 @@
         <!-- About and Case Section - Start
         ================================================== -->
 
-        <section class="client_logo_section section_space" style="background-image: url('../images/shapes/bg_pattern_1.svg'); border-top: 5px solid #676767;">
-            <div class="container">
-                <div class="row funfact_wrapper">
-                    <div class="col-12 text-center mb-5">
-                        <h2 class="heading_text">Pourquoi choisir <mark>ADH Group</mark>?</h2>
-                    </div>
+ <section class="client_logo_section section_space" style="background-image: url('../images/shapes/bg_pattern_1.svg'); border-top: 5px solid #676767;">
+    <div class="container">
+        <div class="row funfact_wrapper">
+            <div class="col-12 text-center mb-5">
+                <h2 class="heading_text">Pourquoi choisir <mark>ADH Group</mark>?</h2>
+            </div>
 
-                    <!-- Carte de gauche -->
-                    <div class="col-lg-4 mb-4 mb-lg-0 d-flex">
-                        <div class="our_world_employees flex-grow-1">
-                            <div class="image_wrap">
-                                <img src="{{ asset('images/about/about_image_1.webp') }}" alt="Techco - Employees Group Image">
+            <!-- Carte de gauche -->
+             <div class="col-lg-4 mb-4 mb-lg-0 d-flex">
+                  <div class="our_world_employees d-flex flex-column w-100">
+                      <div class="image_wrap h-100">
+                      </div>
+                      <div class="content_wrap flex-grow-1 d-flex align-items-center justify-content-center">
+                          <p class="title_text1">
+                              Fort de nos années d'expériences, nous comprenons parfaitement les défis uniques des organisations publiques et privées en Afrique. C'est pourquoi toutes nos solutions sont conçues pour être pratiques, sécurisées et adaptées aux réalités locales. ADH Group vous accompagne avec des technologies performantes qui fonctionnent réellement dans le contexte africain.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+
+            <!-- 4 cartes de droite -->
+            <div class="col-lg-8 d-flex"> 
+                <div class="row w-100">
+                    <!-- Colonne gauche des cartes -->
+                    <div class="col-md-6 d-flex flex-column">
+                        <!-- Première carte -->
+                        <div class="funfact_block flex-fill mb-4 d-flex flex-column">
+                            <div class="funfact_icon">
+                                <img src="{{ asset('images/icons/icon_head.svg') }}" alt="Techco - SVG Icon Head">
                             </div>
-                            <div class="content_wrap">
-                                <p class="title_text1" >
-                                    Fort de nos années d'expériences, nous comprenons parfaitement les défis uniques des organisations publiques et privées en Afrique. C'est pourquoi toutes nos solutions sont conçues pour être pratiques, sécurisées et adaptées aux réalités locales. ADH Group vous accompagne avec des technologies performantes qui fonctionnent réellement dans le contexte africain.
-                               
-                                  </p>
+                            <div class="funfact_content flex-grow-1">
+                                <div class="counter_value">
+                                    <span class="odometer" data-count="10">0</span>
+                                    <span>+</span>
+                                </div>
+                                <h3 class="funfact_title mb-0">Années d'expertise en Afrique</h3>
+                            </div>
+                        </div>
+
+                        <!-- Troisième carte -->
+                        <div class="funfact_block flex-fill d-flex flex-column">
+                            <div class="funfact_icon">
+                                <img src="{{ asset('images/icons/icon_like.svg') }}" alt="Techco - SVG Icon Like">
+                            </div>
+                            <div class="funfact_content flex-grow-1">
+                                <div class="counter_value">
+                                    <span class="odometer" data-count="100">0</span>
+                                    <span>%</span>
+                                </div>
+                                <h3 class="funfact_title mb-0">Solutions sécurisées adaptées aux réalités africaines</h3>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 4 cartes de droite -->
-                    <div class="col-lg-8">
-                        <div class="row h-100">
-                            <!-- Colonne gauche des cartes -->
-                            <div class="col-md-6 d-flex flex-column">
-                                <!-- Première carte -->
-                                <div class="funfact_block flex-grow-1 mb-4">
-                                    <div class="funfact_icon">
-                                        <img src="{{ asset('images/icons/icon_head.svg') }}" alt="Techco - SVG Icon Head">
-                                    </div>
-                                    <div class="funfact_content">
-                                        <div class="counter_value">
-                                            <span class="odometer" data-count="10">0</span>
-                                            <span>+</span>
-                                        </div>
-                                        <h3 class="funfact_title mb-0">Années d'expertise en Afrique</h3>
-                                    </div>
-                                </div>
-
-                                <!-- Troisième carte -->
-                                <div class="funfact_block flex-grow-1 mt-4 mt-md-0">
-                                    <div class="funfact_icon">
-                                        <img src="{{ asset('images/icons/icon_like.svg') }}" alt="Techco - SVG Icon Like">
-                                    </div>
-                                    <div class="funfact_content">
-                                        <div class="counter_value">
-                                            <span class="odometer" data-count="100">0</span>
-                                            <span>%</span>
-                                        </div>
-                                        <h3 class="funfact_title mb-0">Solutions sécurisées adaptées aux réalités africaines</h3>
-                                    </div>
-                                </div>
+                    <!-- Colonne droite des cartes -->
+                    <div class="col-md-6 d-flex flex-column">
+                        <!-- Deuxième carte -->
+                        <div class="funfact_block flex-fill mb-4 d-flex flex-column">
+                            <div class="funfact_icon">
+                                <img src="{{ asset('images/icons/icon_check.svg') }}" alt="Techco - SVG Icon Check">
                             </div>
-
-                            <!-- Colonne droite des cartes -->
-                            <div class="col-md-6 d-flex flex-column">
-                                <!-- Deuxième carte -->
-                                <div class="funfact_block flex-grow-1 mb-4">
-                                    <div class="funfact_icon">
-                                        <img src="{{ asset('images/icons/icon_check.svg') }}" alt="Techco - SVG Icon Check">
-                                    </div>
-                                    <div class="funfact_content">
-                                        <div class="counter_value">
-                                            <span class="odometer" data-count="50">0</span>
-                                            <span>+</span>
-                                        </div>
-                                        <h3 class="funfact_title mb-0">Projets réalisés avec succès</h3>
-                                    </div>
+                            <div class="funfact_content flex-grow-1">
+                                <div class="counter_value">
+                                    <span class="odometer" data-count="50">0</span>
+                                    <span>+</span>
                                 </div>
+                                <h3 class="funfact_title mb-0">Projets réalisés avec succès</h3>
+                            </div>
+                        </div>
 
-                                <!-- Quatrième carte -->
-                                <div class="funfact_block flex-grow-1 mt-4 mt-md-0">
-                                    <div class="funfact_icon">
-                                        <img src="{{ asset('images/icons/icon_dart_board.svg') }}" alt="Techco - SVG Icon Head">
-                                    </div>
-                                    <div class="funfact_content">
-                                        <div class="counter_value">
-                                            <span class="odometer" data-count="5">0</span>
-                                            <span>+</span>
-                                        </div>
-                                        <h3 class="funfact_title mb-0">Pays couverts à travers le continent</h3>
-                                    </div>
+                        <!-- Quatrième carte -->
+                        <div class="funfact_block flex-fill d-flex flex-column">
+                            <div class="funfact_icon">
+                                <img src="{{ asset('images/icons/icon_dart_board.svg') }}" alt="Techco - SVG Icon Head">
+                            </div>
+                            <div class="funfact_content flex-grow-1">
+                                <div class="counter_value">
+                                    <span class="odometer" data-count="5">0</span>
+                                    <span>+</span>
                                 </div>
+                                <h3 class="funfact_title mb-0">Pays couverts à travers le continent</h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
         <section class="about_and_case_section section_space section_decoration bg-dark" style="background-image: url('../images/backgrounds/bg_image_2.webp');">
             <div class="decoration_item shape_image_1">
                 <img src="{{ asset ('images/shapes/shape_space_2.svg') }}"  alt="adh group">
@@ -590,7 +588,7 @@
               <div class="col-lg-6">
               
                 <div class="about_image_1">
-                  <img src="{{ asset('images/about/about9.png') }}" alt="Techco - About Image">
+                  <img src="{{ asset('images/about/about9.png') }}" alt="Techco - About Image" style="border-radius: 2%">
                   <img src="{{ asset ('images/about/about_image_11.webp') }}" data-parallax='{"y" : 80, "smoothness": 6}' alt="Techco - About Image">
                   <img src="{{ asset ('images/about/about_image_10.webp') }}" data-parallax='{"y" : -80, "smoothness": 6}' alt="Techco - About Image">
                 </div>
@@ -682,7 +680,7 @@
         <div class="container">
             <div class="row">
             <div class="col-lg-4">
-                <div class="contact_method_box">
+                <div class="contact_method_box h-100">
                 <div class="heading_block">
                     <div class="heading_focus_text has_underline d-inline-flex mb-3" style="background-image: url('../images/shapes/shape_title_under_line.svg');">
                     Vous êtes ici
@@ -741,7 +739,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="instant_contact_form">
+                <div class="instant_contact_form h-100">
                 <div class="small_title">
                     <i class="fa-solid fa-envelope-open-text"></i>
                     Entrons en contact
@@ -847,7 +845,8 @@
         font-weight: 600;  
         line-height: 1.7;
         font-size: 1.18rem;  
-        color: #374151;  
+        color: #ffffff;
+        margin-top: -20px  
     }
     
     .client_logo_section .funfact_title {
