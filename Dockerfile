@@ -22,21 +22,18 @@ COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 RUN a2ensite 000-default.conf
 
 # Composer (binaire)
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Copie minimale pour optimiser le cache Composer
-COPY composer.json composer.lock ./
-RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader --no-scripts
+# COPY composer.json composer.lock ./
+# RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader --no-scripts
 
 # Copie du reste de l'app (sans vendor grâce au .dockerignore)
 COPY . .
 
-
-# (Optionnel) Terminer les scripts qui étaient bloqués par --no-scripts
-# - On force juste un dump-autoload + package:discover (ne bloque pas si échec)
-RUN composer dump-autoload -o \
- && php artisan package:discover --ansi || true
+RUN composer install --no-interaction --optimize-autoloader --no-dev
 
 
 # Permissions pour les répertoires Laravel
