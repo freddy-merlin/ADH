@@ -27,10 +27,17 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Copie minimale pour optimiser le cache Composer
 COPY composer.json composer.lock ./
-RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
+RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader --no-scripts
 
 # Copie du reste de l'app (sans vendor grâce au .dockerignore)
 COPY . .
+
+
+# (Optionnel) Terminer les scripts qui étaient bloqués par --no-scripts
+# - On force juste un dump-autoload + package:discover (ne bloque pas si échec)
+RUN composer dump-autoload -o \
+ && php artisan package:discover --ansi || true
+
 
 # Permissions pour les répertoires Laravel
 RUN chown -R www-data:www-data storage bootstrap/cache \
