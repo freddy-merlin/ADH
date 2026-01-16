@@ -72,7 +72,7 @@ RUN cp -n .env.example .env
 # https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Generate security key
-RUN php artisan key:generate --force
+RUN php artisan key:generate --force || true
 
 
 # 1) Créer le fichier SQLite (si tu utilises SQLite en prod, ce qui est rare)
@@ -82,10 +82,10 @@ RUN mkdir -p database \
  && chmod 664 database/database.sqlite
 
 # 2) Lancer les migrations + seed
-RUN php artisan migrate:fresh --force
+RUN php artisan migrate:fresh --force || true
 
 
-RUN php artisan optimize:clear
+RUN php artisan optimize:clear || true
 
 #RUN chown -R www-data:www-data .
 RUN chown -R www-data:www-data /var/www/html \
