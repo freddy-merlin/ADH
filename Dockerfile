@@ -1,61 +1,56 @@
-# Utilise une image officielle PHP avec Apache
+
+# ---- Base PHP + Apache ----
 FROM php:8.2-apache
 
-# Définit le répertoire de travail
+# Répertoire de travail
 WORKDIR /var/www/html
 
-# Installe les dépendances système et PHP
+# Dépendances système + extensions PHP (GD/ZIP/OPcache) + modules Apache
 RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    git curl zip unzip \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev libsqlite3-dev \
+ && docker-php-ext-configure gd --with-freetype --with-jpeg \
+ && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip opcache pdo_sqlite \
+ && a2enmod rewrite headers \
+ && rm -rf /var/lib/apt/lists/*
 
-# Active le module de réécriture Apache
-RUN a2enmod rewrite
+# Ecouter sur 8080
+RUN sed -i 's/^Listen .*/Listen 8080/' /etc/apache2/ports.conf
 
-# Installe Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Copie tout le projet dans le container
-COPY . .
-
-# Configure les permissions pour Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Exécute le script de déploiement
-COPY scripts/deploy.sh /usr/local/bin/deploy.sh
-RUN chmod +x /usr/local/bin/deploy.sh
-RUN /usr/local/bin/deploy.sh
-
-# Configure Apache pour écouter sur le port de Render
-RUN echo "Listen 8080" > /etc/apache2/ports.conf
-RUN sed -i 's/80/8080/g' /etc/apache2/sites-available/*.conf
-RUN sed -i 's/80/8080/g' /etc/apache2/apache2.conf
-
-
-# Copie la configuration Apache personnalisée
+# VHost Laravel
 COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
-
-# Désactive la configuration par défaut inadaptée (si elle existe)
-RUN a2dissite 000-default.conf 2>/dev/null || true
-
-# Active notre nouvelle configuration
 RUN a2ensite 000-default.conf
 
- 
+# Composer (binaire)
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Crée le dossier assets et le lie aux images existantes
-RUN mkdir -p /var/www/html/public/assets/images && \
-    ln -sf /var/www/html/public/images/* /var/www/html/public/assets/images/
-    
-# Port exposé (Render utilise le port 8080 ou 10000)
+# Copie minimale pour optimiser le cache Composer
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader
+
+# Copie du reste de l'app (sans vendor grâce au .dockerignore)
+COPY . .
+
+# Permissions pour les répertoires Laravel
+RUN chown -R www-data:www-data storage bootstrap/cache \
+ && chmod -R 775 storage bootstrap/cache
+
+# OPcache (réglages prod simples)
+RUN printf "%s\n" \
+  "opcache.enable=1" \
+  "opcache.enable_cli=1" \
+  "opcache.validate_timestamps=0" \
+  "opcache.jit=1255" \
+  "opcache.jit_buffer_size=128M" \
+  "opcache.preload_user=www-data" \
+  > /usr/local/etc/php/conf.d/opcache.ini
+
+# Entrypoint
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+# Lancement Apache au premier plan
 EXPOSE 8080
-
-# Commande de démarrage
 CMD ["apache2-foreground"]
