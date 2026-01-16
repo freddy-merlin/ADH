@@ -17,7 +17,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     libjpeg-dev \
     #libmbcrypt-dev \
     libonig-dev \
-    libodbc1 \
+    unixodbc unixodbc-dev \
     unzip \
     zlib1g-dev \
     libxml2 \
@@ -30,7 +30,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     sudo \
     g++ \
     libzip-dev \
-    libaio1\
+    libaio-dev \
     gnupg
 
 
