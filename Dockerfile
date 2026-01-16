@@ -85,7 +85,7 @@ RUN mkdir -p database \
 RUN php artisan migrate:fresh --force
 
 
-RUN php artisan optimize:clear --force
+RUN php artisan optimize:clear
 
 #RUN chown -R www-data:www-data .
 RUN chown -R www-data:www-data /var/www/html \
