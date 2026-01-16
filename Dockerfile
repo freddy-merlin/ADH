@@ -8,7 +8,7 @@ WORKDIR /var/www/html
 # Dépendances système + extensions PHP (GD/ZIP/OPcache) + modules Apache
 RUN apt-get update && apt-get install -y \
     git curl zip unzip \
-    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev libsqlite3-dev \
+    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev libsqlite3-dev libonig-dev \
  && docker-php-ext-configure gd --with-freetype --with-jpeg \
  && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip opcache pdo_sqlite \
  && a2enmod rewrite headers \
