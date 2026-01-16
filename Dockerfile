@@ -82,7 +82,7 @@ RUN mkdir -p database \
  && chmod 664 database/database.sqlite
 
 # 2) Lancer les migrations + seed
-RUN php artisan migrate:fresh --seed --force
+RUN php artisan migrate:fresh --force
 
 
 RUN php artisan optimize:clear
