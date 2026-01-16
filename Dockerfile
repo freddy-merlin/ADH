@@ -17,7 +17,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     libjpeg-dev \
     #libmbcrypt-dev \
     libonig-dev \
-    unixodbc unixodbc-dev \
     unzip \
     zlib1g-dev \
     libxml2 \
@@ -37,14 +36,10 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 # Installation dans votre Image du minimum pour que Docker fonctionne
 RUN docker-php-ext-configure intl
 RUN docker-php-ext-install bz2 \
-    iconv \
     bcmath \
     gd \
-    ctype \
-    fileinfo \
     mbstring \
     exif \
-    sockets \
     intl \
     opcache \
     calendar \
