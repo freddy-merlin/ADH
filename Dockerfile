@@ -44,7 +44,6 @@ RUN docker-php-ext-install bz2 \
     opcache \
     calendar \
     zip \
-    sqlite3 \
     pdo_sqlite
 
 # Fix debconf warnings upon build
