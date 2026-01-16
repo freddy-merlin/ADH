@@ -9,7 +9,5 @@ storage/framework/views/*
 .env
 Dockerfile*
 docker-compose*.yml
-docker/
-apache/
 *.log
 *.sqlite
