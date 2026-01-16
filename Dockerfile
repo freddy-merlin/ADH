@@ -1,60 +1,100 @@
-
-# ---- Base PHP + Apache ----
 FROM php:8.2-apache
 
-# Répertoire de travail
+#USER root
+
 WORKDIR /var/www/html
 
-# Dépendances système + extensions PHP (GD/ZIP/OPcache) + modules Apache
-RUN apt-get update && apt-get install -y \
-    git curl zip unzip \
-    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev libxml2-dev libsqlite3-dev libonig-dev \
- && docker-php-ext-configure gd --with-freetype --with-jpeg \
- && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip opcache pdo_sqlite \
- && a2enmod rewrite headers \
- && rm -rf /var/lib/apt/lists/*
+# Install all the dependencies and enable PHP modules
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+    #procps \
+    #nano \
+    git \
+    zip \
+    curl \
+    libicu-dev \
+    libbz2-dev \
+    libpng-dev \
+    libjpeg-dev \
+    #libmbcrypt-dev \
+    libonig-dev \
+    libodbc1 \
+    unzip \
+    zlib1g-dev \
+    libxml2 \
+    libxml2-dev \
+    libsqlite3-dev \
+    libreadline-dev \
+    libfreetype6-dev \
+    supervisor \
+    cron \
+    sudo \
+    g++ \
+    libzip-dev \
+    libaio1\
+    gnupg
 
-# Ecouter sur 8080
-RUN sed -i 's/^Listen .*/Listen 8080/' /etc/apache2/ports.conf
 
-# VHost Laravel
-COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
-RUN a2ensite 000-default.conf
+# Installation dans votre Image du minimum pour que Docker fonctionne
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install bz2 \
+    iconv \
+    bcmath \
+    gd \
+    ctype \
+    fileinfo \
+    mbstring \
+    exif \
+    sockets \
+    intl \
+    opcache \
+    calendar \
+    zip \
+    sqlite3 \
+    pdo_sqlite
 
-# Composer (binaire)
+# Fix debconf warnings upon build
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install selected extensions and other stuff
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install apt-utils libxml2-dev apt-transport-https
+
+#Now move to Dockerfile and use the COPY directive to copy our local vhost configuration to apache configuration
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
+
+# Installation dans votre image de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-# Copie minimale pour optimiser le cache Composer
-# COPY composer.json composer.lock ./
-# RUN composer install --no-interaction --prefer-dist --no-dev --optimize-autoloader --no-scripts
 
-# Copie du reste de l'app (sans vendor grâce au .dockerignore)
+#ENV WEB_DOCUMENT_ROOT .
+#ENV APP_ENV production
+#WORKDIR /app
 COPY . .
 
+RUN cp -n .env.example .env
+
+# Installation et configuration de votre site pour la production
+# https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading
 RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Generate security key
+RUN php artisan key:generate
 
 
-# Permissions pour les répertoires Laravel
-RUN chown -R www-data:www-data storage bootstrap/cache \
- && chmod -R 775 storage bootstrap/cache
+# 1) Créer le fichier SQLite (si tu utilises SQLite en prod, ce qui est rare)
+RUN mkdir -p database \
+ && touch database/database.sqlite \
+ && chown www-data:www-data database/database.sqlite \
+ && chmod 664 database/database.sqlite
 
-# OPcache (réglages prod simples)
-RUN printf "%s\n" \
-  "opcache.enable=1" \
-  "opcache.enable_cli=1" \
-  "opcache.validate_timestamps=0" \
-  "opcache.jit=1255" \
-  "opcache.jit_buffer_size=128M" \
-  "opcache.preload_user=www-data" \
-  > /usr/local/etc/php/conf.d/opcache.ini
+# 2) Lancer les migrations + seed
+RUN php artisan migrate:fresh --seed --force
 
-# Entrypoint
-COPY docker/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
 
-# Lancement Apache au premier plan
-EXPOSE 8080
-CMD ["apache2-foreground"]
+RUN php artisan optimize:clear
+
+#RUN chown -R www-data:www-data .
+RUN chown -R www-data:www-data /var/www/html \
+&& a2enmod rewrite
+
+RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
