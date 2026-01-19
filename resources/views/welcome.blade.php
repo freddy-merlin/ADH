@@ -500,9 +500,10 @@
             <!-- Carte de gauche -->
              <div class="col-lg-4 mb-4 mb-lg-0 d-flex">
                   <div class="our_world_employees d-flex flex-column w-100">
-                      <div class="image_wrap h-100">
-                      </div>
-                      <div class="content_wrap flex-grow-1 d-flex align-items-center justify-content-center">
+                      <div class="image_wrap h-100"  >
+                                <img src="{{ asset('images/icons/icon_head.svg') }}" alt="adh - SVG Icon Head" style="margin-bottom: -10em">
+                       </div>
+                      <div class=" content_wrap flex-grow-1 d-flex align-items-center justify-content-center" >
                           <p class="title_text1">
                               Fort de nos années d'expériences, nous comprenons parfaitement les défis uniques des organisations publiques et privées en Afrique. C'est pourquoi toutes nos solutions sont conçues pour être pratiques, sécurisées et adaptées aux réalités locales. ADH Group vous accompagne avec des technologies performantes qui fonctionnent réellement dans le contexte africain.
                           </p>
