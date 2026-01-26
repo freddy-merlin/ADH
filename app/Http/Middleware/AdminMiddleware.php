@@ -5,24 +5,19 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
-    /**
-     * Handle an incoming request.
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        // Vérifier si l'utilisateur est connecté
+        // Si l'utilisateur n'est pas connecté
         if (!Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login'); // jamais /admin !
         }
 
-        // Vérifier si l'utilisateur est admin
+        // Si l'utilisateur n'est pas admin
         if (Auth::user()->role !== 'admin') {
-            return redirect('/')
-                ->with('error', 'Accès réservé aux administrateurs.');
+            abort(403, 'Accès réservé aux administrateurs.');
         }
 
         return $next($request);

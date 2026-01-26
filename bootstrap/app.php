@@ -11,21 +11,15 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // Enregistrez vos middlewares
+
+         
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
         ]);
+
         
-        // Créez un groupe pour les routes admin
-        $middleware->group('admin', [
-            'web',
-            'auth',
-            'admin',
-        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
-    })->create();
-
-
- 
+    })
+    ->create();

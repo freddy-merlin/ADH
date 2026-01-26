@@ -2,18 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ProjectType extends Model
+class ProjectRequestType extends Pivot
 {
-    use HasFactory;
-    public $timestamps = false; 
+    protected $table = 'project_request_type';
+   // public $timestamps = false;
+    
+    protected $fillable = [
+        'project_request_id',
+        'project_type_id',
+        'type' 
+    ];
 
-    protected $fillable = ['project_request_id', 'type'];
+    public function projectRequests()
+{
+    return $this->belongsToMany(ProjectRequest::class, 'project_request_type', 'project_type_id', 'project_request_id');
+}
 
-    public function projectRequest()
-    {
-        return $this->belongsTo(ProjectRequest::class);
-    }
+
+
+
 }

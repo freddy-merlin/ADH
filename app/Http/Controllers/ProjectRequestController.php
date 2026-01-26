@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectRequest;
-use App\Models\ProjectType;
-use App\Models\ProjectFeature;
+use App\Models\ProjectTypeCatalog;
+use App\Models\ProjectFeatureCatalog;
 use App\Models\ProjectDocument;
 use App\Models\ProjectStatusHistory;
 use Illuminate\Http\Request;
@@ -12,12 +12,13 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class ProjectRequestController extends Controller
 {
     public function store(Request $request)
     {
-        // Log des données reçues (sans les fichiers pour éviter les logs trop lourds)
+        // Log des données reçues
         Log::info('=== DEBUT DEMANDE PROJET ===');
         Log::info('Données reçues:', [
             'prenom' => $request->prenom,
@@ -69,7 +70,7 @@ class ProjectRequestController extends Controller
         Log::info('Validation réussie');
 
         // Commencer une transaction
-        \DB::beginTransaction();
+        DB::beginTransaction();
 
         try {
             // Création de la demande de projet
@@ -96,24 +97,42 @@ class ProjectRequestController extends Controller
 
             Log::info('ProjectRequest créé avec ID: ' . $projectRequest->id);
 
-            // Enregistrement des types de projet
+            // Enregistrement des types de projet (relation many-to-many)
             Log::info('Enregistrement des types de projet...');
-            foreach ($request->type_projet as $type) {
-                ProjectType::create([
-                    'project_request_id' => $projectRequest->id,
-                    'type' => $type,
-                ]);
+            foreach ($request->type_projet as $typeKey) {
+                $type = ProjectTypeCatalog::where('type_key', $typeKey)->first();
+                if ($type) {
+                    $customValue = null;
+                    // Si c'est le type "autre" et qu'il y a une valeur personnalisée
+                    if ($typeKey === 'autre' && $request->filled('type_autre')) {
+                        $customValue = $request->type_autre;
+                    }
+                    
+                    // Attacher le type avec la valeur personnalisée
+                    $projectRequest->types()->attach($type->id, [
+                        'custom_value' => $customValue
+                    ]);
+                    
+                    Log::info('Type attaché: ' . $typeKey . ' (ID: ' . $type->id . ')');
+                } else {
+                    Log::warning('Type non trouvé dans le catalogue: ' . $typeKey);
+                }
             }
             Log::info('Types de projet enregistrés: ' . count($request->type_projet));
 
-            // Enregistrement des fonctionnalités
+            // Enregistrement des fonctionnalités (relation many-to-many)
             if ($request->has('fonctionnalites') && is_array($request->fonctionnalites)) {
                 Log::info('Enregistrement des fonctionnalités...');
-                foreach ($request->fonctionnalites as $feature) {
-                    ProjectFeature::create([
-                        'project_request_id' => $projectRequest->id,
-                        'feature' => $feature,
-                    ]);
+                foreach ($request->fonctionnalites as $featureKey) {
+                    $feature = ProjectFeatureCatalog::where('feature_key', $featureKey)->first();
+                    if ($feature) {
+                        $projectRequest->features()->attach($feature->id, [
+                            'custom_value' => null // Pas de valeur personnalisée pour les fonctionnalités pour l'instant
+                        ]);
+                        Log::info('Fonctionnalité attachée: ' . $featureKey . ' (ID: ' . $feature->id . ')');
+                    } else {
+                        Log::warning('Fonctionnalité non trouvée dans le catalogue: ' . $featureKey);
+                    }
                 }
                 Log::info('Fonctionnalités enregistrées: ' . count($request->fonctionnalites));
             } else {
@@ -179,7 +198,7 @@ class ProjectRequestController extends Controller
             }
 
             // Tout s'est bien passé, on commit
-            \DB::commit();
+            DB::commit();
             Log::info('Transaction committée avec succès');
             Log::info('=== FIN DEMANDE PROJET (SUCCES) ===');
 
@@ -191,7 +210,7 @@ class ProjectRequestController extends Controller
 
         } catch (\Exception $e) {
             // En cas d'erreur, on annule et on retourne une erreur
-            \DB::rollback();
+            DB::rollback();
 
             Log::error('=== ERREUR CRITIQUE ===');
             Log::error('Message: ' . $e->getMessage());

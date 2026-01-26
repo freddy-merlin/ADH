@@ -3,179 +3,441 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - Admin ADH Group</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard Admin - @yield('title', 'ADH Group')</title>
     
     <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-dark: #004080;
+            --primary-light: #e6f0ff;
+            --secondary-color: #667eea;
+            --accent-color: #764ba2;
+            --light-bg: #f8f9fa;
+            --dark-bg: #1a1a2e;
+            --sidebar-width: 250px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            overflow-x: hidden;
         }
+        
+        /* Sidebar */
         .sidebar {
-            min-height: 100vh;
-            background: linear-gradient(180deg, #0066cc 0%, #004d99 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--dark-bg);
             color: white;
-            padding-top: 20px;
-        }
-        .sidebar a {
-            color: rgba(255, 255, 255, 0.8);
-            padding: 10px 15px;
-            display: block;
-            text-decoration: none;
             transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
         }
-        .sidebar a:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            text-decoration: none;
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
         }
-        .sidebar a.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
+        
+        .sidebar-header h3 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 1.5rem;
         }
-        .sidebar .logo {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
+        
+        .sidebar-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .sidebar .user-info {
-            padding: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 20px;
+        
+        .sidebar-menu {
+            padding: 1rem 0;
+            height: calc(100vh - 140px);
+            overflow-y: auto;
         }
-        .status-badge {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        
+        .nav-item {
+            margin: 5px 1rem;
+        }
+        
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-weight: 500;
         }
-        .status-nouveau { background: #007bff; color: white; }
-        .status-en_analyse { background: #ffc107; color: #212529; }
-        .status-contacte { background: #17a2b8; color: white; }
-        .status-devis_envoye { background: #6f42c1; color: white; }
-        .status-accepte { background: #28a745; color: white; }
-        .status-refuse { background: #dc3545; color: white; }
-        .status-termine { background: #6c757d; color: white; }
         
-        .request-card {
-            transition: transform 0.2s;
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            min-height: 100vh;
+            transition: all 0.3s;
+        }
+        
+        /* Top Bar */
+        .top-bar {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .top-bar h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-bg);
+            margin: 0;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        /* Stats Cards */
+        .stats-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stats-icon.blue { background: #e6f0ff; color: var(--primary-color); }
+        .stats-icon.green { background: #e6fff0; color: #28a745; }
+        .stats-icon.orange { background: #fff4e6; color: #fd7e14; }
+        .stats-icon.purple { background: #f0e6ff; color: var(--accent-color); }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-bg);
+            line-height: 1;
+        }
+        
+        .stats-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Recent Activity */
+        .activity-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .activity-card h3 {
+            color: var(--dark-bg);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .activity-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            color: var(--primary-color);
+        }
+        
+        .activity-content h5 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .activity-content p {
+            margin: 0;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .activity-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
         }
-        .request-card:hover {
+        
+        .btn-primary:hover {
+            opacity: 0.9;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,102,204,0.2);
         }
         
-        .table-responsive {
-            overflow-x: auto;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                margin-left: -250px;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .sidebar.active {
+                margin-left: 0;
+            }
         }
         
-        .dataTables_wrapper {
-            margin-top: 20px;
+        /* Badges */
+        .badge {
+            padding: 0.35em 0.65em;
+            font-weight: 500;
+            border-radius: 6px;
         }
         
-        .pagination {
-            justify-content: flex-end;
+        .badge-primary {
+            background: var(--primary-light);
+            color: var(--primary-color);
+        }
+        
+        .badge-success {
+            background: #e6fff0;
+            color: #28a745;
+        }
+        
+        .badge-warning {
+            background: #fff4e6;
+            color: #fd7e14;
+        }
+        
+        .badge-danger {
+            background: #ffe6e6;
+            color: #dc3545;
         }
     </style>
     
     @stack('styles')
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-2 col-lg-2 d-md-block sidebar collapse">
-                <div class="logo">
-                    <h4>ADH Group</h4>
-                    <small>Espace Admin</small>
-                </div>
-                
-                <nav>
-                    <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                        <i class="fas fa-tachometer-alt me-2"></i> Tableau de bord
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-cube"></i>
+                <h3>ADH Admin</h3>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" 
+                       href="{{ route('admin.dashboard') }}">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
                     </a>
-                    <a href="{{ route('admin.project-requests.index') }}" class="{{ request()->routeIs('admin.project-requests.*') ? 'active' : '' }}">
-                        <i class="fas fa-project-diagram me-2"></i> Demandes de projet
-                        @if($newRequestsCount = \App\Models\ProjectRequest::where('status', 'nouveau')->count())
-                            <span class="badge bg-danger float-end">{{ $newRequestsCount }}</span>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.project-requests.*') ? 'active' : '' }}" 
+                       href="{{ route('admin.project-requests.index') }}">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Demandes Projet</span>
+                        @php
+                            $newRequests = App\Models\ProjectRequest::whereDate('created_at', today())->count();
+                        @endphp
+                        @if($newRequests > 0)
+                            <span class="badge badge-warning ms-auto">{{ $newRequests }}</span>
                         @endif
                     </a>
-                    <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                        <i class="fas fa-users me-2"></i> Utilisateurs
-                    </a>
-                    <a href="{{ route('admin.settings') }}" class="{{ request()->routeIs('admin.settings') ? 'active' : '' }}">
-                        <i class="fas fa-cog me-2"></i> Paramètres
-                    </a>
-                </nav>
+                </li>
                 
-                <div class="user-info">
-                    <small>Connecté en tant que</small>
-                    <div>{{ Auth::user()->name }}</div>
-                    <small>{{ Auth::user()->email }}</small>
-                    
-                    <form method="POST" action="{{ route('logout') }}">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}" 
+                       href="{{ Route('admin.messages.index') }}">
+                        <i class="fas fa-envelope"></i>
+                        <span>Messages</span>
+                         
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Déconnexion</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
-                        <button type="submit" class="btn btn-outline-light btn-sm w-100">
-                            <i class="fas fa-sign-out-alt me-1"></i> Déconnexion
-                        </button>
                     </form>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="sidebar-footer p-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="d-flex align-items-center">
+                <div class="user-avatar">
+                    {{ substr(auth()->user()->name, 0, 1) }}
                 </div>
-            </div>
-            
-            <!-- Main content -->
-            <div class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
-                <!-- Top navbar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
-                    <div class="container-fluid">
-                        <button class="btn btn-outline-secondary d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                        
-                        <div class="navbar-nav ms-auto">
-                            <span class="navbar-text me-3">
-                                <i class="fas fa-calendar-alt me-1"></i> {{ now()->format('d/m/Y') }}
-                            </span>
-                        </div>
-                    </div>
-                </nav>
-                
-                <!-- Main content area -->
-                <main class="py-4">
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
-                    
-                    @if(session('error'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {{ session('error') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
-                    
-                    @yield('content')
-                </main>
+                <div class="ms-3">
+                    <h6 class="mb-0" style="font-size: 0.9rem;">{{ auth()->user()->name }}</h6>
+                    <small class="text-muted">Administrateur</small>
+                </div>
             </div>
         </div>
     </div>
     
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div>
+                <h1>@yield('page-title', 'Dashboard')</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Admin</a></li>
+                        <li class="breadcrumb-item active">@yield('breadcrumb', 'Dashboard')</li>
+                    </ol>
+                </nav>
+            </div>
+            
+            
+        </div>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+            
+            @if(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            @endif
+            
+            @yield('content')
+        </div>
+    </div>
+    
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // Toggle sidebar on mobile
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+        
+        // Auto-dismiss alerts after 5 seconds
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 5000);
+        
+        // Update dashboard stats every 30 seconds
+        setInterval(function() {
+            $.get('/admin/dashboard/stats', function(data) {
+                // Update stats if needed
+            });
+        }, 30000);
+    </script>
     
     @stack('scripts')
 </body>

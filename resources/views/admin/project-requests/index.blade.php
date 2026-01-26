@@ -7,8 +7,8 @@
     <h1 class="h2">Demandes de projet</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
-            <a href="{{ route('admin.project-requests.index', ['status' => 'nouveau']) }}" class="btn btn-sm btn-outline-primary">
-                <i class="fas fa-plus-circle"></i> Nouvelles ({{ \App\Models\ProjectRequest::where('status', 'nouveau')->count() }})
+            <a href="{{ route('admin.project-requests.index', ['statut' => 'nouveau']) }}" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-plus-circle"></i> Nouvelles  
             </a>
         </div>
     </div>
@@ -24,16 +24,15 @@
                        value="{{ request('search') }}" placeholder="Nom, email, organisation...">
             </div>
             <div class="col-md-3">
-                <label for="status" class="form-label">Statut</label>
-                <select class="form-select" id="status" name="status">
+                <label for="statut" class="form-label">Statut</label>
+                <select class="form-select" id="statut" name="statut">
                     <option value="">Tous les statuts</option>
-                    <option value="nouveau" {{ request('status') == 'nouveau' ? 'selected' : '' }}>Nouveau</option>
-                    <option value="en_analyse" {{ request('status') == 'en_analyse' ? 'selected' : '' }}>En analyse</option>
-                    <option value="contacte" {{ request('status') == 'contacte' ? 'selected' : '' }}>Contacté</option>
-                    <option value="devis_envoye" {{ request('status') == 'devis_envoye' ? 'selected' : '' }}>Devis envoyé</option>
-                    <option value="accepte" {{ request('status') == 'accepte' ? 'selected' : '' }}>Accepté</option>
-                    <option value="refuse" {{ request('status') == 'refuse' ? 'selected' : '' }}>Refusé</option>
-                    <option value="termine" {{ request('status') == 'termine' ? 'selected' : '' }}>Terminé</option>
+                    <option value="nouveau" {{ request('statut') == 'nouveau' ? 'selected' : '' }}>Nouveau</option>
+                    <option value="en_cours" {{ request('statut') == 'en_cours' ? 'selected' : '' }}>En cours</option>
+                    <option value="analyse" {{ request('statut') == 'analyse' ? 'selected' : '' }}>En analyse</option>
+                    <option value="accepte" {{ request('statut') == 'accepte' ? 'selected' : '' }}>Accepté</option>
+                    <option value="refuse" {{ request('statut') == 'refuse' ? 'selected' : '' }}>Refusé</option>
+                    <option value="termine" {{ request('statut') == 'termine' ? 'selected' : '' }}>Terminé</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -57,7 +56,7 @@
 
 <!-- Table des demandes -->
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover"> 
         <thead class="table-light">
             <tr>
                 <th>ID</th>
@@ -65,6 +64,7 @@
                 <th>Organisation</th>
                 <th>Contact</th>
                 <th>Type projet</th>
+                <th>Fonctionnalités</th>
                 <th>Statut</th>
                 <th>Date</th>
                 <th>Actions</th>
@@ -85,26 +85,38 @@
                 </td>
                 <td>
                     @foreach($request->types as $type)
-                        <span class="badge bg-secondary mb-1">{{ $type->type }}</span><br>
+                        @php
+                            // Récupérer le label du catalogue ou le custom_value si présent
+                            $typeLabel = $type->pivot->custom_value ?? $type->label;
+                        @endphp
+                        <span class="badge bg-secondary mb-1">{{ $typeLabel }}</span><br>
                     @endforeach
                     @if($request->type_autre)
                         <small class="text-muted">{{ $request->type_autre }}</small>
                     @endif
                 </td>
                 <td>
+                    @foreach($request->features as $feature)
+                        @php
+                            // Récupérer le label du catalogue ou le custom_value si présent
+                            $featureLabel = $feature->pivot->custom_value ?? $feature->label;
+                        @endphp
+                        <span class="badge bg-info mb-1">{{ $featureLabel }}</span><br>
+                    @endforeach
+                </td>
+                <td>
                     @php
                         $statusClasses = [
-                            'nouveau' => 'status-nouveau',
-                            'en_analyse' => 'status-en_analyse',
-                            'contacte' => 'status-contacte',
-                            'devis_envoye' => 'status-devis_envoye',
-                            'accepte' => 'status-accepte',
-                            'refuse' => 'status-refuse',
-                            'termine' => 'status-termine',
+                            'nouveau' => 'bg-primary',
+                            'en_cours' => 'bg-warning',
+                            'analyse' => 'bg-info',
+                            'accepte' => 'bg-success',
+                            'refuse' => 'bg-danger',
+                            'termine' => 'bg-secondary',
                         ];
                     @endphp
-                    <span class="status-badge {{ $statusClasses[$request->status] ?? 'status-nouveau' }}">
-                        {{ ucfirst(str_replace('_', ' ', $request->status)) }}
+                    <span class="badge {{ $statusClasses[$request->statut] ?? 'bg-primary' }}">
+                        {{ ucfirst($request->statut) }}
                     </span>
                 </td>
                 <td>
@@ -143,3 +155,19 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+.badge {
+    font-size: 0.8em;
+    padding: 0.35em 0.65em;
+}
+
+.bg-primary { background-color: #007bff !important; }
+.bg-warning { background-color: #ffc107 !important; color: #000; }
+.bg-info { background-color: #17a2b8 !important; }
+.bg-success { background-color: #28a745 !important; }
+.bg-danger { background-color: #dc3545 !important; }
+.bg-secondary { background-color: #6c757d !important; }
+</style>
+@endpush

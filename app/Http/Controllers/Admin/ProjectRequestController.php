@@ -11,9 +11,33 @@ class ProjectRequestController extends Controller
 {
     public function index()
     {
-        $requests = ProjectRequest::with(['types', 'features', 'documents', 'statusHistories'])
-                                 ->orderBy('created_at', 'desc')
-                                 ->paginate(10);
+        $query = ProjectRequest::with(['types', 'features', 'documents', 'statusHistories'])
+                                 ->orderBy('created_at', 'desc');
+
+        // Filtres
+        if (request('search')) {
+            $search = request('search');
+            $query->where(function($q) use ($search) {
+                $q->where('prenom', 'like', "%{$search}%")
+                  ->orWhere('nom', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('organisation', 'like', "%{$search}%");
+            });
+        }
+
+        if (request('statut')) {
+            $query->where('statut', request('statut'));
+        }
+
+        if (request('date_from')) {
+            $query->whereDate('created_at', '>=', request('date_from'));
+        }
+
+        if (request('date_to')) {
+            $query->whereDate('created_at', '<=', request('date_to'));
+        }
+
+        $requests = $query->paginate(10);
 
         return view('admin.project-requests.index', compact('requests'));
     }
@@ -32,12 +56,12 @@ class ProjectRequestController extends Controller
         $projectRequest = ProjectRequest::findOrFail($id);
 
         $validated = $request->validate([
-            'status' => 'required|string|in:nouveau,en_cours,accepte,refuse,termine',
+            'statut' => 'required|string|in:nouveau,en_cours,analyse,accepte,refuse,termine',
             'commentaire' => 'nullable|string',
         ]);
 
-        $ancienStatut = $projectRequest->statut; // Supposons que vous avez un champ statut dans ProjectRequest
-        $nouveauStatut = $validated['status'];
+        $ancienStatut = $projectRequest->statut;
+        $nouveauStatut = $validated['statut'];
 
         // Mettre à jour le statut de la demande
         $projectRequest->statut = $nouveauStatut;
@@ -49,10 +73,19 @@ class ProjectRequestController extends Controller
             'ancien_statut' => $ancienStatut,
             'nouveau_statut' => $nouveauStatut,
             'commentaire' => $validated['commentaire'] ?? null,
-            'changed_by' => auth()->user()->name, // ou un champ approprié de l'utilisateur
+            'changed_by' => auth()->user()->name, 
         ]);
 
         return redirect()->route('admin.project-requests.show', $id)
                          ->with('success', 'Statut mis à jour avec succès.');
+    }
+
+    public function destroy($id)
+    {
+        $projectRequest = ProjectRequest::findOrFail($id);
+        $projectRequest->delete();
+
+        return redirect()->route('admin.project-requests.index')
+                         ->with('success', 'Demande supprimée avec succès.');
     }
 }
