@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  web:
+    container_name: adh-prod-web
+    build: .
+    restart: always
+    working_dir: /var/www/html
     ports:
-      - "8080:8080"
-    environment:
-      - APP_ENV=local
-      - APP_DEBUG=true
-    volumes:
-      - ./:/var/www/html
+      - "8081:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env

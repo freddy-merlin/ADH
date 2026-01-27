@@ -1,61 +1,94 @@
-# Utilise une image officielle PHP avec Apache
 FROM php:8.2-apache
 
-# Définit le répertoire de travail
+#USER root
+
 WORKDIR /var/www/html
 
-# Installe les dépendances système et PHP
-RUN apt-get update && apt-get install -y \
+# Install all the dependencies and enable PHP modules
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+    #procps \
+    #nano \
     git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
     zip \
+    curl \
+    libicu-dev \
+    libbz2-dev \
+    libpng-dev \
+    libjpeg-dev \
+    #libmbcrypt-dev \
+    libonig-dev \
     unzip \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    zlib1g-dev \
+    libxml2 \
+    libxml2-dev \
+    libsqlite3-dev \
+    libreadline-dev \
+    libfreetype6-dev \
+    supervisor \
+    cron \
+    sudo \
+    g++ \
+    libzip-dev \
+    libaio-dev \
+    gnupg
 
-# Active le module de réécriture Apache
-RUN a2enmod rewrite
 
-# Installe Composer
+# Installation dans votre Image du minimum pour que Docker fonctionne
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install bz2 \
+    bcmath \
+    gd \
+    mbstring \
+    exif \
+    intl \
+    opcache \
+    calendar \
+    zip \
+    pdo_sqlite
+
+# Fix debconf warnings upon build
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install selected extensions and other stuff
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install apt-utils libxml2-dev apt-transport-https
+
+#Now move to Dockerfile and use the COPY directive to copy our local vhost configuration to apache configuration
+COPY vhost.conf /etc/apache2/sites-available/000-default.conf
+
+# Installation dans votre image de Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copie tout le projet dans le container
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#ENV WEB_DOCUMENT_ROOT .
+#ENV APP_ENV production
+#WORKDIR /app
 COPY . .
 
-# Configure les permissions pour Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN cp -n .env.example .env
 
-# Exécute le script de déploiement
-COPY scripts/deploy.sh /usr/local/bin/deploy.sh
-RUN chmod +x /usr/local/bin/deploy.sh
-RUN /usr/local/bin/deploy.sh
-
-# Configure Apache pour écouter sur le port de Render
-RUN echo "Listen 8080" > /etc/apache2/ports.conf
-RUN sed -i 's/80/8080/g' /etc/apache2/sites-available/*.conf
-RUN sed -i 's/80/8080/g' /etc/apache2/apache2.conf
+# Installation et configuration de votre site pour la production
+# https://laravel.com/docs/8.x/deployment#optimizing-configuration-loading
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+# Generate security key
+RUN php artisan key:generate --force || true
 
 
-# Copie la configuration Apache personnalisée
-COPY apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+# 1) Créer le fichier SQLite (si tu utilises SQLite en prod, ce qui est rare)
+RUN mkdir -p database \
+ && touch database/database.sqlite \
+ && chown www-data:www-data database/database.sqlite \
+ && chmod 664 database/database.sqlite
 
-# Désactive la configuration par défaut inadaptée (si elle existe)
-RUN a2dissite 000-default.conf 2>/dev/null || true
+# 2) Lancer les migrations + seed
+RUN php artisan migrate:fresh --force || true
 
-# Active notre nouvelle configuration
-RUN a2ensite 000-default.conf
 
- 
+RUN php artisan optimize:clear || true
 
-# Crée le dossier assets et le lie aux images existantes
-RUN mkdir -p /var/www/html/public/assets/images && \
-    ln -sf /var/www/html/public/images/* /var/www/html/public/assets/images/
-    
-# Port exposé (Render utilise le port 8080 ou 10000)
-EXPOSE 8080
+#RUN chown -R www-data:www-data .
+RUN chown -R www-data:www-data /var/www/html \
+&& a2enmod rewrite
 
-# Commande de démarrage
-CMD ["apache2-foreground"]
+RUN apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
