@@ -198,7 +198,6 @@ button {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: var(--bs-dark);
   font-family: var(--bs-heading-font-family); }
   h1:has(b), h2:has(b), h3:has(b), h4:has(b), h5:has(b), h6:has(b) {
     font-weight: 300; }
@@ -1554,29 +1553,7 @@ input[type=search]::-webkit-search-results-decoration {
 ================================================== */
 /* 3.01 - Site Header - Start
 ================================================== */
-.site_header {
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  position: absolute;
-  transition: transform .5s; }
-  .site_header .site_logo .site_link {
-    max-width: 124px; }
-  .site_header .site_logo .badge {
-    margin-left: 5px; }
-  .site_header .header_btns_group {
-    gap: 15px;
-    display: flex;
-    align-items: center; }
-    .site_header .header_btns_group > li:first-child {
-      display: none; }
-  .site_header .header_btns_group .btn {
-    padding: 0 30px; }
-    .site_header .header_btns_group .btn .btn_label {
-      padding: 19px 0px 16px; }
-    .site_header .header_btns_group .btn:hover .btn_label {
-      transform: translateY(-81%); }
+ 
 
 .main_menu_list {
   gap: 48px; }
